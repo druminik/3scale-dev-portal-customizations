@@ -1,0 +1,55 @@
+{
+  "name": "My Developer Portal",
+  "description": "This is an inventory of APIs available as part of My Developer Portal.",
+  "image": "http://i.imgur.com/ntV92b4.png",
+  "tags": [
+    "Animals",
+    "Toys",
+    "Cars"
+  ],
+  "created": "2019-01-24",
+  "modified": "2019-01-24",
+  "url": "developers.example.com/apis.json",
+  "specificationVersion": "0.14",
+  "apis": [
+{% assign num = provider.services.size | minus: 1 %}
+{% for i in (0..num) %}
+{% assign service = provider.services[i] %}  
+{  
+  "name": "{{ service.name }}",
+  "description": "{{ service.description | strip_newlines }}",
+  "X-3scale":{
+    "service_id":{{ service.id}},
+    "swagger_system_name":"{{ service.system_name }}",
+{% if service.subscription %}
+   "subscription_url":""
+{% else %}
+     "subscription_url":"{{ service.subscribe_url }}"
+{% endif %}
+  },
+  "image": "https://developers.example.com/images/api-logo.png",
+"humanURL": "https://example.com/",
+"baseURL": "http://example.com",
+"properties": [
+    {
+      "type": "X-signup",
+      "url": "https://example.com/"
+    },
+    {
+      "type": "Swagger",
+      "url": "https://example.com/swagger/spec/sms2_0.json"
+    }
+  ],
+"contact": [
+  {
+    "FN": "My Company",
+    "email": "info@example.com"
+   }
+  ]
+}
+{% if i != num %}
+,
+{% endif %}
+{% endfor %}
+]
+}
