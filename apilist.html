@@ -92,7 +92,7 @@
               {{/if}}
             </div>
             <div class= "col-md-10">
-              <a href="/details?service={{X-3scale.swagger_system_name}}">
+              <a href="/details?service_id={{X-3scale.service_id}}">
               <h2>{{ this.name }}</h2>
               </a>
               <p>{{ this.description }} </p>              
@@ -101,9 +101,9 @@
               {{/each}}
             
               {{#if X-3scale.subscription_url}}
-              Subscribed
+        <p><a href="{{X-3scale.subscription_url}}">Subscribe</a></p>
               {{else}}
- 				<p><a href="{{X-3scale.subscription_url}}">Subscribe</a></p>
+              Subscribed
 			{{/if}}
          
             </div>
@@ -136,6 +136,7 @@
       Handlebars.registerPartial("searchBar", $("#searchBarTpl").html());
       Handlebars.registerPartial("categories", $("#categoriesTpl").html());
       Handlebars.registerPartial("apiList", $("#apiListTpl").html());
+      console.log("gugus");
 
       $.getJSON('apis.json').done(function(data) {
         APIS = data.apis

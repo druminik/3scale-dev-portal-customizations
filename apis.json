@@ -27,13 +27,13 @@
      "subscription_url":"{{ service.subscribe_url }}"
 {% endif %}
   },
-  "image": "https://developers.example.com/images/api-logo.png",
+  "image": "https://3scale.acme.com/images/api-logo.png",
 "humanURL": "https://example.com/",
-"baseURL": "http://example.com",
+"baseURL": "3scale.acme.com",
 "properties": [
     {
       "type": "X-signup",
-      "url": "https://example.com/"
+      "url": "3scale.acme.com/"
     },
     {
       "type": "Swagger",

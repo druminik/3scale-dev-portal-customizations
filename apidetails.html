@@ -144,6 +144,7 @@
     $("#swagger-ui-container").parent().remove();
 
     var service_id = Number(extractServiceID())
+    console.log("Service ID: "+service_id);
     var url = 'apis.json'
 //4a.function creation
 // var slingshot = function (url, tplId, anchor) {
@@ -180,7 +181,12 @@
   }
 
   function extractServiceID(){
-    var url = window.location.href
+    var url = window.parent.location;
+    // console.log("URL is " + url);
+    // var params = new URLSearchParams(url);
+    // console.log("Params: "+params);
+    // var service_id = params.get("sevice_id");
+    // console.log("Service id "+service_id);
     var captured = /service_id=([^&]+)/.exec(url)[1]; // Value is in [1]
     return captured;
   }
